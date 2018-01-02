@@ -13,21 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.greglturnquist.hateoas;
+package com.devwantjusthavefun.springhateoascustomizejackson;
 
-import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
-import org.springframework.context.annotation.Configuration;
+import java.time.Instant;
 
-import com.fasterxml.jackson.databind.SerializationFeature;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 /**
  * @author Greg Turnquist
  */
-@Configuration
-public class CustomizeJackson  {
+@Component
+class DatabaseLoader
+{
 
-//	@Bean
-	public Jackson2ObjectMapperBuilderCustomizer objectMapperBuilder() {
-		return builder -> builder.featuresToEnable(SerializationFeature.INDENT_OUTPUT);
-	}
+    @Bean
+    CommandLineRunner InitDatabase(final EmployeeRepository repository)
+    {
+
+        return args -> {
+            repository.save(new Employee("Frodo", "ring bearer", Instant.now()));
+            repository.save(new Employee("Bilbo", "burglar", Instant.now()));
+        };
+    }
 }

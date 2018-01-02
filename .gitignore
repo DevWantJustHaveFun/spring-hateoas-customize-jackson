@@ -6,3 +6,5 @@ target/
 .idea
 *.orig
 .springBeans
+/.gradle/
+/build/

@@ -13,24 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.greglturnquist.hateoas;
+package com.devwantjusthavefun.springhateoascustomizejackson;
 
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
+import org.springframework.data.repository.CrudRepository;
 
 /**
  * @author Greg Turnquist
  */
-@Component
-class DatabaseLoader {
-
-	@Bean
-	CommandLineRunner InitDatabase(EmployeeRepository repository) {
-		
-		return args -> {
-			repository.save(new Employee("Frodo", "ring bearer"));
-			repository.save(new Employee("Bilbo", "burglar"));
-		};
-	}
+interface EmployeeRepository extends CrudRepository<Employee, Long>
+{
+    // nothing special here
 }

@@ -13,9 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.greglturnquist.hateoas;
+package com.devwantjusthavefun.springhateoascustomizejackson;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,17 +26,19 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Greg Turnquist
  */
 @RestController
-class RootController {
+class RootController
+{
 
-	@GetMapping("/")
-	ResourceSupport root() {
+    @GetMapping("/")
+    ResourceSupport root()
+    {
 
-		ResourceSupport root = new ResourceSupport();
+        final ResourceSupport root = new ResourceSupport();
 
-		root.add(linkTo(methodOn(RootController.class).root()).withSelfRel());
-		root.add(linkTo(methodOn(EmployeeController.class).findAll()).withRel("employees"));
+        root.add(linkTo(methodOn(RootController.class).root()).withSelfRel());
+        root.add(linkTo(methodOn(EmployeeController.class).findAll()).withRel("employees"));
 
-		return root;
-	}
+        return root;
+    }
 
 }
