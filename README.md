@@ -4,7 +4,7 @@ Sample repository for testing jackson customization with Spring-Hateos and Java 
  
 Based on gregturn's sample repository and this issue https://github.com/spring-projects/spring-hateoas/issues/333 
 
-the main lesson of my investigation is when you use this jackson feature :
+the main lesson of my investigation is when you use, jackson date feature, like  :
 
 `spring.jackson.serialization.write-dates-as-timestamps=false`
 
