@@ -7,4 +7,5 @@ target/
 *.orig
 .springBeans
 /.gradle/
-/build/
+/build
+/bin
